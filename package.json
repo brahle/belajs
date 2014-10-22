@@ -1,6 +1,6 @@
 {
   "name": "BelaJS",
-  "main": "index.js",
+  "main": "app.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/brahle/belajs.git"
@@ -16,7 +16,7 @@
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.2"
   },
-  "description": "belajs ======",
+  "description": "BelaJS is a Node.js implementation of the card game Belot.",
   "bugs": {
     "url": "https://github.com/brahle/belajs/issues"
   },

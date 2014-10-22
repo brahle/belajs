@@ -9,7 +9,7 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 
 var secret = require('./secret.js');
 var config = require('./config.js');
-var models = require('./models.js');
+var models = require('./lib/models.js');
 
 AWS.config.loadFromPath('./aws-config.json');
 var db = new AWS.DynamoDB();
