@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
+var jade = require('jade');
 
 var secret = require('./secret.js');
 var config = require('./config.js');
@@ -42,18 +43,23 @@ passport.use(new FacebookStrategy({
 /*jslint unparam: false*/
 
 app.get('/', function (request, response) {
-  if (request.user) {
-    response.send(request.user);
-    response.end();
-    return;
-  }
-  response.send('<a href="/auth/facebook">Log in</a>');
+  response.send(jade.renderFile(
+    'templates/base.jade',
+    {
+      pretty: true,
+      user: request.user
+    }
+  ));
 });
 app.get('/auth/facebook', passport.authenticate('facebook'));
 app.get('/auth/facebook/callback', passport.authenticate(
   'facebook',
   {successRedirect: '/', failureRedirect: '/failed'}
 ));
+app.get('/logout', function (req, res) {
+  req.logout();
+  res.redirect('/');
+});
 
 /*jslint unused: true*/
 var server = app.listen(config.server.port, function () {

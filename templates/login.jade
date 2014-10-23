@@ -1,0 +1,11 @@
+ul.nav.navbar-nav.navbar-right
+  if user
+    li.dropdown
+      a.dropdown-toggle(href="#", data-toggle="dropdown") #{user.Name}&nbsp;
+        span.caret
+      ul.dropdown-menu(role="menu")
+        li
+          a(href="/logout") Log out
+  else
+    li
+      a(href="/auth/facebook") Facebook Login
